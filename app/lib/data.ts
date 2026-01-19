@@ -52,6 +52,58 @@ export const projects: Project[] = [
         ]
     },
     {
+        id: "unrealpcg",
+        title: "PCG Building",
+        tags: ["PCG", "Unreal Engine"],
+        category: "PCG / Unreal Engine",
+        year: "2025",
+        description: "PCG Building, coming soon...",
+        thumbnail: "/projects/PCG/pcg_01.png",
+        software: ["UE5", "Houdini", "PCG", "Lidar"],
+        stack: [
+            // { icon: "monitor", title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
+            { icon: "layers", title: "PCG Systems", desc: "Процедурная генерация в UE5." },
+            // { icon: "zap", title: "Lidar Sensors", desc: "Интеграция систем отслеживания для интерактива." },
+            // { icon: "cpu", title: "Optimization", desc: "Стабильные 60 FPS при масштабном рендеринге." }
+        ],
+        media: [
+            {
+                type: "image",
+                url: "/projects/PCG/pcg_01.png"
+            },
+            {
+                type: "text",
+                content: "COMING SOON...\n"
+            }
+        ]
+    },
+    {
+        id: "stylizedenv",
+        title: "Stylized Environment",
+        tags: ["PCG", "Unreal Engine", "Stylized"],
+        category: "PCG / Unreal Engine / Stylized",
+        year: "2025",
+        description: "Stylized Village Environment, coming soon...",
+        thumbnail: "/projects/stylizedEnv/images/stylized_02.png",
+        software: ["UE5", "Blender", "ZBrush", "Substance Painter/Designer"],
+        stack: [
+            // { icon: "monitor", title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
+            { icon: "layers", title: "PCG Systems", desc: "Процедурная генерация в UE5." },
+            // { icon: "zap", title: "Lidar Sensors", desc: "Интеграция систем отслеживания для интерактива." },
+            // { icon: "cpu", title: "Optimization", desc: "Стабильные 60 FPS при масштабном рендеринге." }
+        ],
+        media: [
+            {
+                type: "image",
+                url: "/stylizedEnv/images/stylized_02.png"
+            },
+            {
+                type: "text",
+                content: "COMING SOON...\n"
+            }
+        ]
+    },
+    {
         id: "dubaiFestival",
         title: "Dubai Music Festival",
         tags: ["VFX", "Cinematic", "Environment", "Unreal Engine"],
