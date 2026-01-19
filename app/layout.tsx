@@ -1,14 +1,12 @@
 import React from "react";
 import "./globals.css";
 import Link from "next/link";
-import Cursor from "@/components/Cursor";
 import { Mail, Send, Linkedin } from "lucide-react";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="ru" className="scroll-smooth">
         <body className="bg-[#fcfcfc] text-black antialiased font-sans">
-        <Cursor />
         <header className="fixed top-0 w-full z-50 bg-[#fcfcfc]/90 backdrop-blur-sm pt-8 pb-4 px-6 md:px-12">
 
             {/* ЛОГОТИП ES (Увеличен) */}
