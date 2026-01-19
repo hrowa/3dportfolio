@@ -112,11 +112,7 @@ export const projects: Project[] = [
             {
                 type: "image",
                 url: "/projects/dubai/images/7.png",
-            },
-            {
-                type: "image",
-                url: "/projects/dubai/images/8.png",
-            },
+            }
         ]
     },
     {
@@ -228,10 +224,20 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
         description: `Various Unreal & Unity VFX's using Houdini Engine / Niagara`,
         thumbnail: "/projects/vfx/images/explosion.png",
         software: ["Unreal Engine", "Houdini", "Unity"],
+        stack: [
+            { icon: "layers", title: "Niagara", desc: "Создание эффектов внутри Unreal / Unity" },
+            { icon: "zap", title: "Houdini Engine", desc: "Создание эффектов с помощью Houdini" },
+            { icon: "monitor", title: "Optimization", desc: "Оптимизация контента под игровой движок" }
+    ],
         media: [
             {
                 type: "video",
                 url: "/projects/vfx/video/explosion-2.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            {
+                type: "video",
+                url: "/projects/vfx/video/SwordTrail.mp4", // Внешнее видео (YouTube/Vimeo)
 
             },
             {
@@ -292,11 +298,11 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
     {
         id: "FlyOverMoscow",
         title: "VR Instalation Fly Over Moscow",
-        tags: ["VFX", "Unreal Engine", "VR"],
+        tags: ["Unreal Engine", "VR"],
         category: "VR / Cinematic / Unreal Engine",
         year: "2025",
         description: `VR Instalation Fly Over Moscow of The Future`,
-        thumbnail: "/projects/flyovermoscow/7.jpg",
+        thumbnail: "/projects/flyovermoscow/logo.png",
         software: ["Unreal Engine", "AfterEffects"],
         media: [
             {

@@ -19,6 +19,14 @@ import 'swiper/css/pagination';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+// Карта иконок для динамического стека
+const iconMap: Record<string, React.ReactNode> = {
+    monitor: <Monitor />,
+    layers: <Layers />,
+    zap: <Zap />,
+    cpu: <Cpu />,
+};
+
 const fadeInUp = {
     initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
@@ -127,7 +135,15 @@ export default function ProjectDetail() {
                                         <img src={item.url} alt="" className="w-full h-auto shadow-sm cursor-zoom-in group-hover:scale-[1.01] transition-transform duration-1000" onClick={() => handleOpenLightbox([item], 0)} />
                                     ) : (
                                         <div className="aspect-video w-full bg-black shadow-2xl overflow-hidden">
-                                            <video src={item.url} muted loop playsInline controls className="w-full h-full object-cover" />
+                                            <video
+                                                src={item.url}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                controls
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
                                     )}
                                 </div>
@@ -137,26 +153,25 @@ export default function ProjectDetail() {
                 </div>
             </main>
 
-            {/* WORKFLOW GRID */}
-            <section className="py-24 bg-gray-50 border-y border-black">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h3 className="text-5xl font-black uppercase mb-16 tracking-tighter">Production Stack</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-1 bg-black border border-black">
-                        {[
-                            { icon: <Monitor />, title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
-                            { icon: <Layers />, title: "PCG Systems", desc: "Процедурная генерация лесных массивов в UE5." },
-                            { icon: <Zap />, title: "Lidar Sensors", desc: "Интеграция систем отслеживания для интерактива." },
-                            { icon: <Cpu />, title: "Optimization", desc: "Стабильные 60 FPS при масштабном рендеринге." }
-                        ].map((step, i) => (
-                            <div key={i} className="p-10 bg-white hover:bg-black hover:text-white transition-all duration-700">
-                                <div className="mb-12 opacity-20">{step.icon}</div>
-                                <h4 className="text-lg font-black uppercase mb-4">{step.title}</h4>
-                                <p className="text-sm opacity-60 leading-relaxed">{step.desc}</p>
-                            </div>
-                        ))}
+            {/* WORKFLOW GRID - DYNAMIC VERSION */}
+            {project.stack && project.stack.length > 0 && (
+                <section className="py-24 bg-gray-50 border-y border-black">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <h3 className="text-5xl font-black uppercase mb-16 tracking-tighter">Production Stack</h3>
+                        <div className={`grid grid-cols-1 md:grid-cols-${Math.min(project.stack.length, 4)} gap-1 bg-black border border-black`}>
+                            {project.stack.map((step: any, i: number) => (
+                                <div key={i} className="p-10 bg-white hover:bg-black hover:text-white transition-all duration-700 group">
+                                    <div className="mb-12 opacity-20 group-hover:opacity-100 transition-opacity">
+                                        {iconMap[step.icon] || <Layers />}
+                                    </div>
+                                    <h4 className="text-lg font-black uppercase mb-4">{step.title}</h4>
+                                    <p className="text-sm opacity-60 leading-relaxed">{step.desc}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* RELATED PROJECTS FOOTER */}
             <footer className="max-w-7xl mx-auto px-6 py-32">

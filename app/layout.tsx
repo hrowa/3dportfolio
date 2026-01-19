@@ -37,18 +37,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* 3. Правая колонка (CV и Соцсети) */}
                 <div className="flex items-center justify-end gap-6">
-                    <a href="/cv.pdf" target="_blank" className="text-[12px] uppercase font-black tracking-widest hover:opacity-50 transition clickable border-r border-black/10 pr-6">
+                    <a href="/esuldin_cv.pdf" target="_blank" className="text-[12px] uppercase font-black tracking-widest hover:opacity-50 transition clickable border-r border-black/10 pr-6">
                         CV
                     </a>
 
                     <div className="flex gap-5 items-center">
-                        <a href="https://linkedin.com/in/..." target="_blank" className="hover:scale-125 transition-transform clickable">
+                        <a href="https://www.linkedin.com/in/evgeniy-suldin-16825a24/" target="_blank" className="hover:scale-125 transition-transform clickable">
                             <Linkedin size={18} strokeWidth={2} />
                         </a>
-                        <a href="https://t.me/..." target="_blank" className="hover:scale-125 transition-transform clickable">
+                        <a href="https://t.me/hrowa" target="_blank" className="hover:scale-125 transition-transform clickable">
                             <Send size={18} strokeWidth={2} />
                         </a>
-                        <a href="mailto:..." className="hover:scale-125 transition-transform clickable">
+                        <a href="mailto:adjidomo@gmail.com" className="hover:scale-125 transition-transform clickable">
                             <Mail size={18} strokeWidth={2} />
                         </a>
                     </div>
