@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "./lib/data";
 
-const ALL_TAGS = ["All", "Environment", "Props", "Stylized", "Lighting"];
+const ALL_TAGS = ["All", "Environment", "Props", "Stylized", "VFX", "Unreal Engine", "Unity"];
 
 export default function PortfolioPage() {
     const [activeTag, setActiveTag] = useState("All");
@@ -27,31 +27,32 @@ export default function PortfolioPage() {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                 <AnimatePresence mode="popLayout">
                     {filtered.map((project) => (
                         <motion.div
                             key={project.id}
                             layout
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.4 }}
                             className="group clickable"
                         >
                             <Link href={`/project/${project.id}`}>
-                                <div className="aspect-[16/10] relative overflow-hidden bg-gray-100 mb-6 shadow-sm">
+                                <div className="aspect-[16/10] relative overflow-hidden bg-gray-100 mb-6 shadow-sm border border-black/5">
                                     <Image
                                         src={project.thumbnail}
                                         alt={project.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className="object-cover transition-all duration-700
-               group-hover:scale-105
-               group-hover:brightness-110
-               group-hover:saturate-[1.15]"
+                                       group-hover:scale-110
+                                       group-hover:brightness-110"
                                     />
                                 </div>
-                                <h3 className="text-xl font-bold uppercase tracking-tighter">{project.title}</h3>
-                                <p className="text-[10px] text-gray-400 uppercase tracking-widest">{project.category}</p>
+                                <h3 className="text-lg font-black uppercase tracking-tighter leading-tight">{project.title}</h3>
+                                <p className="text-[9px] text-gray-400 uppercase tracking-widest mt-1 font-bold">{project.category}</p>
                             </Link>
                         </motion.div>
                     ))}

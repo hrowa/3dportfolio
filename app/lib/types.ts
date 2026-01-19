@@ -1,7 +1,19 @@
+export interface ProjectStack {
+    icon: 'monitor' | 'layers' | 'zap' | 'cpu'; // Строго ограничиваем иконки
+    title: string;
+    desc: string;
+}
+
+export interface ProjectRoadmap {
+    step: string;
+    task: string;
+    res: string;
+}
+
 export interface ProjectMedia {
-    type: 'image' | 'video' | 'text'; // Добавили 'text'
-    url?: string;                     // Опционально, т.к. у текста нет url
-    content?: string;                 // Поле для самого текста
+    type: 'image' | 'video' | 'text' | 'vr' | 'vr_video';
+    url?: string;
+    content?: string;
     layout?: 'full' | 'carousel';
 }
 
@@ -15,4 +27,6 @@ export interface Project {
     thumbnail: string;
     software: string[];
     media: ProjectMedia[];
+    stack?: ProjectStack[];
+    roadmap?: ProjectRoadmap[];
 }

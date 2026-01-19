@@ -1,224 +1,179 @@
+/* eslint-disable */
 "use client";
 import { useParams } from "next/navigation";
 import { projects } from "@/app/lib/data";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRef, useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+import { Layers, Cpu, Monitor, Zap, Move3d, MousePointer2 } from "lucide-react";
 
-// Swiper
+const VRPlayer = dynamic(() => import("@/components/VRPlayer"), { ssr: false });
+const VRVideoPlayer = dynamic(() => import("@/components/VRVideoPlayer"), { ssr: false });
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-// Lightbox
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+
+const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+};
 
 export default function ProjectDetail() {
     const { id } = useParams();
     const project = projects.find((p) => p.id === id);
-
-    // Состояние для Lightbox
     const [open, setOpen] = useState(false);
     const [lightboxSlides, setLightboxSlides] = useState<{ src: string }[]>([]);
     const [initialIndex, setInitialIndex] = useState(0);
+    const [relatedProjects, setRelatedProjects] = useState<typeof projects>([]);
 
-    // Функция открытия лайтбокса
+    useEffect(() => {
+        const shuffled = [...projects].filter((p) => p.id !== id).sort(() => 0.5 - Math.random()).slice(0, 3);
+        setRelatedProjects(shuffled);
+    }, [id]);
+
     const handleOpenLightbox = (items: any[], index: number) => {
-        const slidesForLightbox = items.map(item => ({ src: item.url }));
-        setLightboxSlides(slidesForLightbox);
+        setLightboxSlides(items.map(item => ({ src: item.url })));
         setInitialIndex(index);
         setOpen(true);
     };
 
-    // Компонент видео с автоплеем
-    const AutoPlayVideo = ({ url }: { url: string }) => {
-        const videoRef = useRef<HTMLVideoElement>(null);
-        useEffect(() => {
-            const observer = new IntersectionObserver(([entry]) => {
-                if (entry.isIntersecting) videoRef.current?.play().catch(() => {});
-                else videoRef.current?.pause();
-            }, { threshold: 0.3 });
-            if (videoRef.current) observer.observe(videoRef.current);
-            return () => observer.disconnect();
-        }, []);
-
-        return (
-            <video
-                ref={videoRef}
-                src={url}
-                muted
-                loop
-                playsInline
-                controls
-                className="w-full h-full object-cover shadow-lg"
-            />
-        );
-    };
-
-    // Логика формирования структуры страницы (группировка каруселей и обработка текста)
     const renderedContent = useMemo(() => {
         if (!project) return [];
         const finalLayout: any[] = [];
         let tempCarousel: any[] = [];
-
         project.media.forEach((item) => {
-            // Если встречаем текст или одиночный элемент, сбрасываем накопленную карусель
-            if (item.type === 'text' || item.layout !== 'carousel') {
-                if (tempCarousel.length > 0) {
-                    finalLayout.push({ type: "carousel_group", items: [...tempCarousel] });
-                    tempCarousel = [];
-                }
+            if (item.type === 'text' || item.type === 'vr' || item.type === 'vr_video' || item.layout !== 'carousel') {
+                if (tempCarousel.length > 0) { finalLayout.push({ type: "carousel_group", items: [...tempCarousel] }); tempCarousel = []; }
                 finalLayout.push(item);
-            } else {
-                // Если layout === 'carousel', добавляем в буфер
-                tempCarousel.push(item);
-            }
+            } else { tempCarousel.push(item); }
         });
-
-        // Добавляем остатки карусели, если они были в конце
-        if (tempCarousel.length > 0) {
-            finalLayout.push({ type: "carousel_group", items: [...tempCarousel] });
-        }
-
+        if (tempCarousel.length > 0) finalLayout.push({ type: "carousel_group", items: [...tempCarousel] });
         return finalLayout;
     }, [project]);
 
-    // Рекомендации (3 рандомных проекта)
-    const relatedProjects = useMemo(() => {
-        return projects
-            .filter((p) => p.id !== id)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 3);
-    }, [id]);
+    if (!project) return <div className="h-screen flex items-center justify-center uppercase font-bold tracking-widest">Project not found</div>;
 
-    if (!project) return (
-        <div className="h-screen flex items-center justify-center uppercase tracking-widest font-bold">
-            Project not found
-        </div>
-    );
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="px-6 md:px-12 pb-32 pt-10"
-        >
-            {/* Лайтбокс для просмотра во весь экран */}
-            <Lightbox
-                open={open}
-                close={() => setOpen(false)}
-                slides={lightboxSlides}
-                index={initialIndex}
-            />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white text-black">
+            <Lightbox open={open} close={() => setOpen(false)} slides={lightboxSlides} index={initialIndex} />
 
-            {/* ВЕРХНЯЯ ЧАСТЬ (HEADER) */}
-            <header className="max-w-5xl mx-auto mb-24">
-                <Link href="/" className="inline-block mb-12 text-[10px] uppercase tracking-[0.3em] font-bold hover:opacity-50 transition">
-                    ← Back to Portfolio
-                </Link>
-
-                <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 leading-[0.85]">
-                    {project.title}
-                </h1>
-
-                {project.description && (
-                    <p className="max-w-3xl text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed font-medium whitespace-pre-line">
-                        {project.description}
-                    </p>
-                )}
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-black/10 pt-8 text-[11px] uppercase tracking-[0.2em] font-bold">
-                    <div><p className="text-gray-400 mb-2 font-normal italic">Year</p>{project.year}</div>
-                    <div><p className="text-gray-400 mb-2 font-normal italic">Category</p>{project.category}</div>
-                    <div className="col-span-2">
-                        <p className="text-gray-400 mb-2 font-normal italic">Tools</p>
-                        {project.software.join(" / ")}
+            {/* HEADER SECTION */}
+            <header className="px-6 md:px-12 pt-10 pb-24 border-b border-black">
+                <div className="max-w-7xl mx-auto">
+                    <Link href="/" className="inline-block mb-16 text-[10px] uppercase tracking-[0.4em] font-black hover:opacity-50 transition">← Back to Portfolio</Link>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                        {/*@ts-expect-error*/}
+                        <motion.div {...fadeInUp} className="lg:col-span-8">
+                            <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-12">{project.title}</h1>
+                            <p className="max-w-3xl text-xl md:text-3xl text-gray-800 leading-tight font-medium">{project.description}</p>
+                        </motion.div>
+                        <div className="lg:col-span-4 flex flex-col justify-end">
+                            <div className="grid grid-cols-2 gap-8 border-t border-black pt-8 text-[11px] uppercase tracking-[0.2em] font-bold">
+                                <div><p className="text-gray-400 mb-2 font-normal italic">Year</p>{project.year}</div>
+                                <div><p className="text-gray-400 mb-2 font-normal italic">Category</p>{project.category}</div>
+                                <div className="col-span-2"><p className="text-gray-400 mb-2 font-normal italic">Tools</p>{project.software.join(" / ")}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
 
-            {/* ОСНОВНОЙ КОНТЕНТ (MEDIA & TEXT) */}
-            <div className="max-w-5xl mx-auto flex flex-col gap-24 items-center mb-40">
-                {renderedContent.map((item, index) => (
-                    <div key={index} className="w-full md:w-[85%]">
+            {/* MAIN CONTENT LOOP */}
+            <main className="py-24">
+                <div className="max-w-5xl mx-auto flex flex-col gap-40 px-6">
+                    {renderedContent.map((item, index) => (
+                        // @ts-ignore
+                        <motion.div key={index} {...fadeInUp} className="w-full">
 
-                        {/* 1. ТЕКСТОВЫЙ БЛОК */}
-                        {item.type === 'text' ? (
-                            <div className="max-w-3xl mx-auto py-6">
-                                <p className="text-lg md:text-xl text-gray-800 leading-relaxed italic">
-                                    {item.content}
-                                </p>
-                            </div>
-                        ) : item.type === 'carousel_group' ? (
-                            /* 2. КАРУСЕЛЬ КАРТИНОК */
-                            <div className="w-full shadow-lg overflow-hidden border border-black/5 bg-gray-50">
-                                <Swiper
-                                    modules={[Navigation, Pagination, Autoplay]}
-                                    navigation
-                                    pagination={{ clickable: true }}
-                                    autoplay={{ delay: 3500, disableOnInteraction: false }}
-                                    className="cursor-zoom-in"
-                                >
-                                    {item.items.map((slide: any, sIndex: number) => (
-                                        <SwiperSlide key={sIndex} onClick={() => handleOpenLightbox(item.items, sIndex)}>
-                                            <img src={slide.url} alt="" className="w-full h-auto block" />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            </div>
-                        ) : (
-                            /* 3. ОДИНОЧНЫЕ ЭЛЕМЕНТЫ */
-                            <div className="w-full">
-                                {item.type === 'image' ? (
-                                    <img
-                                        src={item.url}
-                                        alt=""
-                                        className="w-full h-auto shadow-sm cursor-zoom-in transition-transform duration-500 hover:scale-[1.01]"
-                                        onClick={() => handleOpenLightbox([item], 0)}
-                                    />
-                                ) : (
-                                    <div className="aspect-video w-full bg-black overflow-hidden shadow-xl">
-                                        {item.url?.includes('youtube') || item.url?.includes('vimeo') ? (
-                                            <iframe src={item.url} className="w-full h-full" allowFullScreen />
-                                        ) : (
-                                            <AutoPlayVideo url={item.url || ""} />
-                                        )}
+                            {/* ADVANCED TEXT RENDERING */}
+                            {item.type === 'text' ? (
+                                <div className="max-w-4xl border-l-8 border-black pl-10 py-4">
+                                    {item.content.split('\n\n').map((paragraph: string, pIdx: number) => {
+                                        if (pIdx === 0) return <h3 key={pIdx} className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-16 leading-none">{paragraph}</h3>;
+                                        const [subtitle, ...description] = paragraph.split('\n');
+                                        return (
+                                            <div key={pIdx} className="mb-10 last:mb-0">
+                                                <h4 className="text-xl md:text-2xl font-black uppercase tracking-tight mb-2 flex items-center gap-3">
+                                                    <span className="w-8 h-[2px] bg-black"></span> {subtitle.replace('— ', '')}
+                                                </h4>
+                                                <p className="text-lg md:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl ml-11">
+                                                    {description.join(' ')}
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : item.type === 'vr' ? (
+                                <div className="space-y-6">
+                                    <div className="flex justify-between items-end italic text-[10px] uppercase font-bold tracking-widest text-gray-400">
+                                        <span>Interactive 360° Environment</span>
+                                        <span>Drag to rotate</span>
                                     </div>
-                                )}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-
-            {/* НИЖНЯЯ ЧАСТЬ (РЕКОМЕНДАЦИИ) */}
-            <footer className="max-w-6xl mx-auto border-t border-black pt-20">
-                <h2 className="text-[10px] uppercase font-bold tracking-[0.4em] mb-12 text-center text-gray-400 font-sans">
-                    Other Projects
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    {relatedProjects.map((p) => (
-                        <Link key={p.id} href={`/project/${p.id}`} className="group block">
-                            <div className="aspect-[16/10] overflow-hidden bg-gray-100 mb-6">
-                                <img
-                                    src={p.thumbnail}
-                                    alt={p.title}
-                                    className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                                />
-                            </div>
-                            <h4 className="text-sm font-black uppercase tracking-tight mb-1">{p.title}</h4>
-                            <p className="text-[9px] text-gray-400 uppercase tracking-widest">{p.category}</p>
-                        </Link>
+                                    <div className="border-[1px] border-black p-1 shadow-2xl"><VRPlayer url={item.url} /></div>
+                                </div>
+                            ) : (
+                                <div className="w-full group">
+                                    {item.type === 'image' ? (
+                                        <img src={item.url} alt="" className="w-full h-auto shadow-sm cursor-zoom-in group-hover:scale-[1.01] transition-transform duration-1000" onClick={() => handleOpenLightbox([item], 0)} />
+                                    ) : (
+                                        <div className="aspect-video w-full bg-black shadow-2xl overflow-hidden">
+                                            <video src={item.url} muted loop playsInline controls className="w-full h-full object-cover" />
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </motion.div>
                     ))}
                 </div>
+            </main>
 
-                <div className="text-center mt-24">
-                    <Link href="/" className="px-10 py-4 border border-black text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all">
-                        Back to all work
-                    </Link>
+            {/* WORKFLOW GRID */}
+            <section className="py-24 bg-gray-50 border-y border-black">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h3 className="text-5xl font-black uppercase mb-16 tracking-tighter">Production Stack</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-1 bg-black border border-black">
+                        {[
+                            { icon: <Monitor />, title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
+                            { icon: <Layers />, title: "PCG Systems", desc: "Процедурная генерация лесных массивов в UE5." },
+                            { icon: <Zap />, title: "Lidar Sensors", desc: "Интеграция систем отслеживания для интерактива." },
+                            { icon: <Cpu />, title: "Optimization", desc: "Стабильные 60 FPS при масштабном рендеринге." }
+                        ].map((step, i) => (
+                            <div key={i} className="p-10 bg-white hover:bg-black hover:text-white transition-all duration-700">
+                                <div className="mb-12 opacity-20">{step.icon}</div>
+                                <h4 className="text-lg font-black uppercase mb-4">{step.title}</h4>
+                                <p className="text-sm opacity-60 leading-relaxed">{step.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* RELATED PROJECTS FOOTER */}
+            <footer className="max-w-7xl mx-auto px-6 py-32">
+                <div className="flex justify-between items-center mb-20 border-b border-black/10 pb-6">
+                    <h2 className="text-[10px] uppercase font-black tracking-[0.5em] text-gray-400">Related Case Studies</h2>
+                    <Link href="/" className="text-[10px] uppercase font-black hover:opacity-50 transition">All Projects</Link>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+                    {relatedProjects.map((p) => (
+                        <Link key={p.id} href={`/project/${p.id}`} className="group block">
+                            <div className="aspect-square overflow-hidden bg-gray-100 mb-8 border border-black/5">
+                                <img src={p.thumbnail} alt={p.title} className="object-cover w-full h-full transition-all duration-1000 scale-105 group-hover:scale-110" />
+                            </div>
+                            <h4 className="text-md font-black uppercase mb-2 leading-none">{p.title}</h4>
+                            <p className="text-[9px] text-gray-400 uppercase font-black tracking-widest">{p.category}</p>
+                        </Link>
+                    ))}
                 </div>
             </footer>
         </motion.div>
