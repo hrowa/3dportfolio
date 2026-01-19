@@ -274,7 +274,7 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
         category: "VFX / Houdini / Unreal Engine / Unity",
         year: "2021",
         description: `Various Unreal & Unity VFX's using Houdini Engine / Niagara`,
-        thumbnail: "/projects/vfx/images/explosion.png",
+        thumbnail: "/projects/vfx/images/logo.png",
         software: ["Unreal Engine", "Houdini", "Unity"],
         stack: [
             { icon: "layers", title: "Niagara", desc: "Создание эффектов внутри Unreal / Unity" },
@@ -354,7 +354,7 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
         category: "VR / Cinematic / Unreal Engine",
         year: "2025",
         description: `VR Instalation Fly Over Moscow of The Future`,
-        thumbnail: "/projects/flyovermoscow/logo.png",
+        thumbnail: "/projects/flyovermoscow/fly.png",
         software: ["Unreal Engine", "AfterEffects"],
         media: [
             {
