@@ -95,7 +95,7 @@ export const projects: Project[] = [
         media: [
             {
                 type: "image",
-                url: "/stylizedEnv/images/stylized_02.png"
+                url: "/projects/stylizedEnv/images/stylized_02.png"
             },
             {
                 type: "text",
@@ -173,13 +173,22 @@ export const projects: Project[] = [
         tags: ["Animation Series", "VFX"],
         category: "Animation, VFX",
         year: "2017-2022",
-        description: "Создание анимационного сериала Лео и Тиг",
+        description: "Участие в создании анимационного сериала Лео и Тиг",
         thumbnail: "/projects/leotig/images/poster.jpg",
         software: ["Houdini", "Maya", "Arnold"],
+        stack: [
+            { icon: "layers", title: "Maya", desc: "Настройка рендера, освещения для сцен и шейдинга" },
+            { icon: "zap", title: "Houdini", desc: "Создание VFX в Houdini." },
+            { icon: "monitor", title: "Python/MEL", desc: "Написание скриптов для автоматизации производства" }
+        ],
         media: [
             {
                 type: "image",
                 url: "/projects/leotig/images/poster.jpg",
+            },
+            {
+                type: "text",
+                content: " Responsibilities\n\n— Rendering and Lighting\nНастройка рендера и освещения для сцен.\n\n— Custom Shaders\nСоздание кастомных шейдеров в Maya, Arnold\n\n— Houdini\nСоздание VFX в Houdini.\n\n— Python/MEL\nНаписание скриптов для автоматизации производства."
             },
             {
                 type: "video",
@@ -194,12 +203,9 @@ export const projects: Project[] = [
         tags: ["UI", "C++", "Blueprints", "Unreal Engine"],
         category: "UI / C++",
         year: "2025",
-        description: `This project showcases a custom main menu system built entirely with Unreal Engine’s CommonUI framework, combining C++ logic and Blueprint-driven visuals.
+        description: `
 
-The menu features:
-🎮 Fully functional UI navigation (Story / Options / Credits / Quit)
-⚙️ C++ foundation for input handling, transitions, and state management
-🧩 Blueprints for visual logic and animation control
+
 
 The goal was to create a stylish, responsive main menu for a narrative sci-fi game prototype, demonstrating how CommonUI can be seamlessly integrated into custom game interfaces using a hybrid C++ and Blueprint workflow.`,
         thumbnail: "/projects/UI/images/1.png",
@@ -210,10 +216,15 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
             { icon: "zap", title: "Blueprint Visuals", desc: "Dynamic UI animations and state transitions." }
         ],
         media: [
+
             {
                 type: "video",
                 url: "/projects/UI/video/video_ui.mp4", // Внешнее видео (YouTube/Vimeo)
 
+            },
+            {
+                type: "text",
+                content: "\n\n— Navigation\n🎮 Fully functional UI navigation (Story / Options / Credits / Quit)\n\n— C++\n🧩 C++ Core Systems: input routing, menu state management, and transitions.\n\n— Blueprints\n🔷 Widget Blueprints: animations, hover effects, sound cues, and transitions.\n\n— Responsive\n🖥️ Responsive Options Menu: dynamic UI that adjusts to screen ratio, device type, and user settings."
             },
             {
                 type: "image",

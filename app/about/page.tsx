@@ -96,7 +96,7 @@ export default function AboutPage() {
                             <div>
                                 <p className="text-[16px] font-bold uppercase tracking-widest text-black">HGC Studio</p>
                                 <p className="text-[14px] text-gray-400 ">Technical Artist</p>
-                                <p className="text-[12px] text-gray-400 ">Jun 2023 — 2025 Nov </p>
+                                <p className="text-[12px] text-gray-400 ">Jun 2022 — 2023 Nov </p>
                             </div>
                         </div>
 
