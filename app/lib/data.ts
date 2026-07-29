@@ -301,7 +301,7 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
         category: "Environment / Houdini / Unreal Engine",
         year: "2021",
         description: `Procedural forest environment`,
-        thumbnail: "/projects/houdini_env/temple.jpg",
+        thumbnail: "/projects/houdini_env/images/temple.jpg",
         software: ["Unreal Engine", "C++"],
         media: [
             {
