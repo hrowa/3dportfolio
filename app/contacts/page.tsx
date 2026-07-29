@@ -51,7 +51,7 @@ export default function ContactsPage() {
 
                         {/* Telegram */}
                         <a
-                            href="https://t.me/hrowa"
+                            href="https://t.me/esuldin"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-6 group clickable"

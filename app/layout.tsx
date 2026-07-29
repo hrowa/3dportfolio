@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <a href="https://www.linkedin.com/in/evgeniy-suldin-16825a24/" target="_blank" className="hover:scale-125 transition-transform clickable">
                             <Linkedin size={18} strokeWidth={2} />
                         </a>
-                        <a href="https://t.me/hrowa" target="_blank" className="hover:scale-125 transition-transform clickable">
+                        <a href="https://t.me/esuldin" target="_blank" className="hover:scale-125 transition-transform clickable">
                             <Send size={18} strokeWidth={2} />
                         </a>
                         <a href="mailto:adjidomo@gmail.com" className="hover:scale-125 transition-transform clickable">

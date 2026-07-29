@@ -22,7 +22,7 @@ export interface Project {
     title: string;
     tags: string[];
     category: string;
-    year: string;
+    year?: string;
     description: string;
     thumbnail: string;
     software: string[];

@@ -79,6 +79,16 @@ export default function AboutPage() {
                         {/* Company 1 */}
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 shrink-0 bg-gray-100 rounded-sm flex items-center justify-center overflow-hidden">
+                                <img src="/logos/indomi.png" alt="Talking Birds" className="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                                <p className="text-[16px] font-bold uppercase tracking-widest text-black">Indomi Studio</p>
+                                <p className="text-[14px] text-gray-400 ">Technical Artist, VFX Artist</p>
+                                <p className="text-[12px] text-gray-400 ">Apr 2025 — Present</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 shrink-0 bg-gray-100 rounded-sm flex items-center justify-center overflow-hidden">
                                 <img src="/logos/TBFF.PNG" alt="Talking Birds" className="w-full h-full object-contain" />
                             </div>
                             <div>
@@ -91,12 +101,24 @@ export default function AboutPage() {
                         {/* Company 2 */}
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 shrink-0 bg-gray-100 rounded-sm flex items-center justify-center overflow-hidden">
-                                <img src="/logos/parovoz.jpg" alt="HGC" className="w-full h-full object-contain" />
+                                <img src="/logos/nologo.png" alt="HGC" className="w-full h-full object-contain" />
                             </div>
                             <div>
                                 <p className="text-[16px] font-bold uppercase tracking-widest text-black">HGC Studio</p>
                                 <p className="text-[14px] text-gray-400 ">Technical Artist</p>
                                 <p className="text-[12px] text-gray-400 ">Jun 2022 — 2023 Nov </p>
+                            </div>
+                        </div>
+
+
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 shrink-0 bg-gray-100 rounded-sm flex items-center justify-center overflow-hidden">
+                                <img src="/logos/mygames.png" alt="mygames" className="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                                <p className="text-[16px] font-bold uppercase tracking-widest text-black">MY.GAMES</p>
+                                <p className="text-[14px] text-gray-400 ">Technical Artist</p>
+                                <p className="text-[12px] text-gray-400 ">Oct 2021 — 2022 Mar</p>
                             </div>
                         </div>
 
@@ -107,8 +129,8 @@ export default function AboutPage() {
                             </div>
                             <div>
                                 <p className="text-[16px] font-bold uppercase tracking-widest text-black">Parovoz, Animation Studio</p>
-                                <p className="text-[14px] text-gray-400 ">3D Generalist</p>
-                                <p className="text-[12px] text-gray-400 ">Jan 2017 — 2022 May</p>
+                                <p className="text-[14px] text-gray-400 ">3D Generalist/VFX Artist</p>
+                                <p className="text-[12px] text-gray-400 ">Jan 2017 — 2021 Oct</p>
                             </div>
                         </div>
                         {/* Company 4 */}
@@ -130,10 +152,12 @@ export default function AboutPage() {
                 <div className="md:col-span-8 space-y-8 text-lg md:text-xl text-gray-700 leading-relaxed border-l border-black/5 md:pl-12">
                     <h2 className="text-[24px] uppercase font-bold tracking-[0.3em] text-black">About Me</h2>
                     <p>
-                        Мой путь в индустрии начался с позиций <strong>CG Generalist'a</strong> и <strong>3D Artist'a</strong>, что дало мне глубокое понимание полного цикла производства графики. Со временем мой интерес сместился в сторону <strong>VFX</strong> и <strong>Technical Art</strong>, где пересекаются визуальное совершенство и логика кода.
+                        Я начинал как CG Generalist и 3D-художник — это дало мне понимание полного цикла производства графики, от первого блокинга до финального рендера. Со временем интерес сместился в сторону VFX и Technical Art: здесь визуальная составляющая встречается с логикой кода, и мне интересно работать именно на этом стыке.
+
+
                     </p>
                     <p>
-                        За последние годы я реализовал ряд знаковых проектов: участвовал в создании мультсериала "Лео и Тиг", неанонсированного AAA проекта, а так же в создании инсталяций для интерактивного парка «Лес Чудес» в Манжероке, синематика для Dubai Music Festival и иммерсивных инсталляций для Microsoft.
+                        За последние годы я приложил руку к нескольким заметным проектам: анимационному сериалу «Лео и Тиг», неанонсированному AAA-проекту, интерактивным инсталляциям для парка «Лес Чудес» в Манжероке, синематику для Dubai Music Festival и иммерсивным инсталляциям для Microsoft.
                     </p>
                 </div>
             </section>
@@ -212,7 +236,7 @@ export default function AboutPage() {
                     <div className="space-y-4">
                         <h4 className="font-black uppercase text-xl underline underline-offset-8 decoration-1">Dota 2</h4>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Бесконечный источник вдохновения в плане визуального экспириенса. Для меня это эталон того, как комплексные эффекты, шейдеры и анимации должны работать в синергии, не перегружая восприятие, но четко транслируя игровую логику.
+                            Для меня это эталон синергии комплексных VFX, шейдеров и анимаций. Игра идеально демонстрирует, как сложная визуалка может четко транслировать игровую логику, не перегружая восприятие игрока.
                         </p>
                     </div>
 
@@ -220,7 +244,7 @@ export default function AboutPage() {
                     <div className="space-y-4">
                         <h4 className="font-black uppercase text-xl underline underline-offset-8 decoration-1">Baduk (Go)</h4>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Давняя моя любовь, игра, которая учит стратегическому мышлению и пониманию формы. В техническом искусстве, как и в Бадук, важен баланс: локальные решения всегда должны подчиняться глобальной архитектуре системы.
+                            Игра, сформировавшая мое стратегическое мышление. Как и в Go, в Technical Art важен баланс: любое локальное решение должно подчиняться глобальной архитектуре системы.
                         </p>
                     </div>
 
@@ -228,7 +252,7 @@ export default function AboutPage() {
                     <div className="space-y-4">
                         <h4 className="font-black uppercase text-xl underline underline-offset-8 decoration-1">Psychology</h4>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Психологическое образование помогает мне находить общий язык в любой конфликтной ситкации.
+                            Психологическое образование помогает мне находить общий язык в любой конфликтной ситуации.
                         </p>
                     </div>
 

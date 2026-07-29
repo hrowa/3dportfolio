@@ -12,7 +12,7 @@ export const projects: Project[] = [
         software: ["UE5", "Houdini", "PCG", "Lidar"],
         stack: [
             { icon: "monitor", title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
-            { icon: "layers", title: "PCG Systems", desc: "Процедурная генерация лесных массивов в UE5." },
+            // { icon: "layers", title: "PCG Systems", desc: "Процедурная генерация лесных массивов в UE5." },
             { icon: "zap", title: "Lidar Sensors", desc: "Интеграция систем отслеживания для интерактива." },
             { icon: "cpu", title: "Optimization", desc: "Стабильные 60 FPS при масштабном рендеринге." }
         ],
@@ -79,12 +79,12 @@ export const projects: Project[] = [
     },
     {
         id: "stylizedenv",
-        title: "Stylized Environment",
+        title: "Stylized Env",
         tags: ["PCG", "Unreal Engine", "Stylized"],
         category: "PCG / Unreal Engine / Stylized",
-        year: "2025",
-        description: "Stylized Village Environment, coming soon...",
-        thumbnail: "/projects/stylizedEnv/images/stylized_02.png",
+        year: "2026",
+        description: "Stylized Village Environment",
+        thumbnail: "/projects/stylizedEnv/images/1.png",
         software: ["UE5", "Blender", "ZBrush", "Substance Painter/Designer"],
         stack: [
             // { icon: "monitor", title: "360° Mapping", desc: "Сшивка нескольких 4K потоков в единое пространство." },
@@ -95,12 +95,58 @@ export const projects: Project[] = [
         media: [
             {
                 type: "image",
-                url: "/projects/stylizedEnv/images/stylized_02.png"
+                url: "/projects/stylizedEnv/images/1.png"
             },
             {
                 type: "text",
-                content: "COMING SOON...\n"
-            }
+                content: "Modular Assets"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/image.jpg"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/2.jpg"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/4.jpg"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/5.jpg"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/7.jpg"
+            },
+            {
+                type: "text",
+                content: "PCG Flowers"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/6.jpg"
+            },
+            {
+                type: "video",
+                url: "/projects/stylizedEnv/video/1.mp4",
+
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/3.jpg"
+            },
+            {
+                type: "text",
+                content: "Materials"
+            },
+            {
+                type: "image",
+                url: "/projects/stylizedEnv/images/8.png"
+            },
+
         ]
     },
     {
@@ -356,6 +402,48 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
                 url: "/projects/vfx/video/unity_05.mp4", // Внешнее видео (YouTube/Vimeo)
 
             }
+        ]
+    },
+    {
+        id: "megalodon",
+        title: "Houdini Water sim To Unreal",
+        tags: ["VFX", "Houdini", "Unreal Engine"],
+        category: "VFX / Houdini / Unreal Engine",
+        year: "2021",
+        description: `Houdini Virtual Animation Textures To Unreal`,
+        thumbnail: "/projects/megalodon/cover.png",
+        software: ["Unreal Engine", "Houdini", "Unity"],
+        stack: [
+            { icon: "layers", title: "Niagara", desc: "Интреграция эффектов внутри Unreal" },
+            { icon: "zap", title: "Houdini Engine", desc: "Создание эффектов с помощью Houdini" },
+            { icon: "monitor", title: "Optimization", desc: "Оптимизация контента под игровой движок" }
+        ],
+        media: [
+            {
+                type: "video",
+                url: "/projects/megalodon/01.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            {
+                type: "video",
+                url: "/projects/megalodon/02.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            {
+                type: "video",
+                url: "/projects/megalodon/03.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            {
+                type: "video",
+                url: "/projects/megalodon/04.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            // {
+            //     type: "video",
+            //     url: "/projects/megalodon/05.mp4", // Внешнее видео (YouTube/Vimeo)
+            //
+            // },
         ]
     },
     {
