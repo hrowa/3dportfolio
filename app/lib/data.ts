@@ -54,7 +54,7 @@ export const projects: Project[] = [
     {
         id: "unrealpcg",
         title: "PCG Building",
-        tags: ["PCG", "Unreal Engine"],
+        tags: ["PCG", "Unreal Engine", "Environment"],
         category: "PCG / Unreal Engine",
         year: "2025",
         description: "PCG Building, coming soon...",
@@ -80,8 +80,8 @@ export const projects: Project[] = [
     {
         id: "stylizedenv",
         title: "Stylized Env",
-        tags: ["PCG", "Unreal Engine", "Stylized"],
-        category: "PCG / Unreal Engine / Stylized",
+        tags: ["PCG", "Unreal Engine", "Stylized", "Environment"],
+        category: "PCG / Unreal Engine / Stylized / Environment",
         year: "2026",
         description: "Stylized Village Environment",
         thumbnail: "/projects/stylizedEnv/images/1.png",
@@ -305,22 +305,22 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
         software: ["Unreal Engine", "C++"],
         media: [
             {
+                type: "image",
+                url: "/projects/houdini_env/images/temple.jpg",
+            },
+            {
                 type: "video",
-                url: "/projects/houdini_env/temple.mp4", // Внешнее видео (YouTube/Vimeo)
+                url: "/projects/houdini_env/video/temple.mp4", // Внешнее видео (YouTube/Vimeo)
+
+            },
+            {
+                type: "video",
+                url: "/projects/houdini_env/video/houdini_forest.mp4", // Внешнее видео (YouTube/Vimeo)
 
             },
             {
                 type: "image",
-                url: "/projects/houdini_env/temple.jpg",
-            },
-            {
-                type: "video",
-                url: "/projects/houdini_env/houdini_forest.mp4", // Внешнее видео (YouTube/Vimeo)
-
-            },
-            {
-                type: "image",
-                url: "/projects/houdini_env/houdini-terrain.jpg",
+                url: "/projects/houdini_env/images/houdini-terrain.jpg",
             }
         ]
     },

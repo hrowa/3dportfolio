@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "./lib/data";
 
-const ALL_TAGS = ["All", "Environment", "Props", "Stylized", "VFX", "Unreal Engine", "Unity"];
+const ALL_TAGS = ["All", "Environment", "Stylized", "VFX", "Unreal Engine", "Unity", "VR"];
 
 export default function PortfolioPage() {
     const [activeTag, setActiveTag] = useState("All");
