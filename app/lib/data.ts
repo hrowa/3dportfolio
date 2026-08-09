@@ -491,5 +491,35 @@ The goal was to create a stylish, responsive main menu for a narrative sci-fi ga
 
             },
         ]
+    },
+    {
+        id: "Whirlpool",
+        title: "Test stuff",
+        tags: ["Unreal Engine", "VFX"],
+        category: "VFX / Unreal Engine",
+        year: "2026",
+        description: `VFX Test`,
+        thumbnail: "/projects/whirlpool/whirlpool.png",
+        software: ["Unreal Engine"],
+        media: [
+            {
+                type: "text",
+                content: "Material"},
+            {
+                type: "image",
+                url: "/projects/whirlpool/whirlpool.png",
+
+            },
+            {
+                type: "video",
+                url: "/projects/whirlpool/whirlpool_02.mp4",
+
+            },
+            {
+                type: "video",
+                url: "/projects/whirlpool/whirlpool_03.mp4",
+
+            },
+        ]
     }
 ];
